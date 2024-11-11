@@ -1,0 +1,106 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ebeef5;
+    color: #333;
+}
+
+/* Sección de Contacto */
+.contacto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0;
+}
+
+.contacto h2 {
+    text-align: center;
+    font-size: 24px;
+    color: #0A1C42;
+    margin-bottom: 20px;
+    font-family: 'Playfair Display', serif;
+}
+
+/* Estilo de formulario */
+.contacto form {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+}
+
+/* Tabla de formulario */
+.contacto table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #0A1C42;
+}
+
+.contacto table td {
+    padding: 10px;
+    font-size: 16px;
+    vertical-align: middle;
+    border: none;
+}
+
+.contacto label {
+    font-weight: bold;
+    color: #0A1C42;
+}
+
+.contacto input[type="text"],
+.contacto input[type="password"],
+.contacto input[type="date"] {
+    width: 95%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.contacto select {
+    width: 95%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+}
+.contacto select option:disabled {
+    color: #0A1C42;
+    font-weight: bold;
+}
+
+
+/* Estilos para radio buttons y checkbox */
+.contacto input[type="radio"],
+.contacto input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+/* Botones del formulario */
+.contacto button {
+    background-color: #0A1C42;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.contacto button:hover {
+    background-color: #F4D30F;
+    color: #0A1C42;
+}
+
+/* Estilo para la fila de botones */
+.contacto table tr:last-child td {
+    text-align: center;
+}
