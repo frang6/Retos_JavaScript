@@ -21,26 +21,28 @@
                 <tr>
                     <td><label for="nombre">Nombre y Apellidos:</label></td>
                     <td><input type="text" id="nombre" name="nombre" maxlength="50">
-                        <span class="error"></span></td>
+                        <span id="error-nombre" class="error"></span></td>
                 </tr>
                 <tr>
                     <td><label for="fecha">Fecha de nacimiento:</label></td>
                     <td><input type="text" id="fecha" name="fecha_nacimiento" 
                             pattern="^\d{2}/\d{2}/\d{4}$" title="Formato dd/mm/yyyy">
-                        <span class="error"></span></td>
+                        <span id="error-fecha" class="error"></span></td>
                 </tr>
                 <tr>
                     <td><label for="correo">Correo electrónico:</label></td>
-                    <td><input type="text" id="correo" name="correo" 
-                            pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" 
-                            title="Correo electrónico no válido">
-                        <span class="error"></span></td>
+                    <td>
+                        <input type="text" id="correo" name="correo" 
+                               pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" 
+                               title="Correo electrónico no válido">
+                        <span id="error-correo" class="error"></span>
+                    </td>
                 </tr>
                 <tr>
                     <td><label for="telefono">Teléfono:</label></td>
                     <td><input type="text" id="telefono" name="telefono" 
                             pattern="^\+\d{2,3}-\d{9}$" title="Formato: +código-país seguido de 9 cifras">
-                        <span class="error"></span></td>
+                        <span id="error-telefono" class="error"></span></td>
                 </tr>
                 <tr>
                     <td><label for="opciones">Edad:</label></td>
@@ -50,7 +52,7 @@
                             <option value="opcion2">Adulto</option>
                             <option value="opcion3">Jubilado</option>
                         </select>
-                        <span class="error"></span></td>
+                        <span id="error-opciones" class="error"></span></td>
                 </tr>
                 <tr>
                     <td><label for="suscripcion">Quiere unirse al club de Ski:</label></td>

@@ -3,29 +3,29 @@ document.getElementById('enviar').addEventListener('click', function (event) {
     event.preventDefault();
 
     if (validarIdentificador() && validarNombre() && validarFechaNacimiento() && validarTelefono() && validarCorreo()) {
-        this.submit();
+        this.form.submit();
     }
 });
 
 function validarIdentificador() {
     const identificador = document.getElementById('identificador');
     const errorMessage = document.getElementById('error-identificador');
-
+    
     if (identificador.validity.patternMismatch) {
-        errorMessage.textContent = identificador.title || 'Identificador no válido';
+        errorMessage.textContent = identificador.title;
         identificador.style.border = '2px solid red';
-    } else {
+    }else {
         errorMessage.textContent = '';
         identificador.style.border = '';
     }
 
-    return !identificador.validity.patternMismatch;
+    return identificador.validity.patternMismatch;
 }
 
 // Función para validar Nombre y Apellidos
 function validarNombre() {
     const nombre = document.getElementById('nombre');
-    const errorMessage = nombre.getElementById('.error');
+    const errorMessage = document.getElementById('error-nombre');
 
     if (nombre.validity.valueMissing) {
         errorMessage.textContent = 'El nombre y apellidos son obligatorios';
@@ -44,10 +44,10 @@ function validarNombre() {
 // Función para validar Fecha de Nacimiento (dd/mm/yyyy)
 function validarFechaNacimiento() {
     const fecha = document.getElementById('fecha');
-    const errorMessage = fecha.getElementById('.error');
+    const errorMessage = document.getElementById('error-fecha');
 
     if (fecha.validity.patternMismatch) {
-        errorMessage.textContent = fecha.title || 'Formato de fecha no válido (dd/mm/yyyy)';
+        errorMessage.textContent = fecha.title;
         fecha.style.border = '2px solid red';
     } else {
         errorMessage.textContent = '';
@@ -60,11 +60,10 @@ function validarFechaNacimiento() {
 // Función para validar Correo Electrónico
 function validarCorreo() {
     const correo = document.getElementById('correo');
-    const errorMessage = correo.getElementById('.error');
-
+    const errorMessage = document.getElementById('error-correo');
 
     if (correo.validity.patternMismatch) {
-        errorMessage.textContent = correo.title || 'Correo electrónico no válido';
+        errorMessage.textContent = correo.title;
         correo.style.border = '2px solid red';
     } else {
         errorMessage.textContent = '';
@@ -76,11 +75,10 @@ function validarCorreo() {
 // Función para validar Teléfono
 function validarTelefono() {
     const telefono = document.getElementById('telefono');
-    const errorMessage = telefono.getElementById('.error');
-
+    const errorMessage = document.getElementById('error-telefono');
 
     if (telefono.validity.patternMismatch) {
-        errorMessage.textContent = telefono.title || 'Formato de teléfono no válido';
+        errorMessage.textContent = telefono.title;
         telefono.style.border = '2px solid red';
     } else {
         errorMessage.textContent = '';
@@ -93,7 +91,7 @@ function validarTelefono() {
 // Función para validar Edad: debe seleccionar una opción
 function validarEdad() {
     const edad = document.getElementById('opciones');
-    const errorMessage = edad.getElementById('.error');
+    const errorMessage = document.getElementById('error-opciones');
 
     if (edad.validity.valueMissing) {
         errorMessage.textContent = 'Debes seleccionar una opción de edad.';
