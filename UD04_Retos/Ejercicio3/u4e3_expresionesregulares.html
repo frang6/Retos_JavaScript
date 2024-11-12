@@ -31,7 +31,6 @@
                         <span id="error-cocinero" class="error"></span>
                     </td>
                 </tr>
-
                 <tr>
                     <td><label for="destinatario">Destinatario:</label></td>
                     <td>
@@ -40,16 +39,14 @@
                         <span id="error-destinatario" class="error"></span>
                     </td>
                 </tr>
-
                 <tr>
                     <td><label for="gramos">Gramos:</label></td>
                     <td>
-                        <input type="number" id="gramos" name="gramos" min="1000" max="5000"
+                        <input type="text" id="gramos" name="gramos" min="1000" max="5000"
                             title="Ingrese un valor entre 1000 y 5000 gramos">
                         <span id="error-gramos" class="error"></span>
                     </td>
                 </tr>
-
                 <tr>
                     <td><label for="composicion">Composición:</label></td>
                     <td>
@@ -58,24 +55,21 @@
                         <span id="error-composicion" class="error"></span>
                     </td>
                 </tr>
-
                 <tr>
                     <td><label for="numCuenta">Número de cuenta de EEUU:</label></td>
                     <td>
                         <input type="text" id="numCuenta" name="numCuenta" pattern="^[A-Z]{2}\d{2}-\d{12}-\d{2}$"
                             title="Formato esperado: dos letras, dos dígitos, un guión, doce dígitos, un guión, y dos dígitos de control">
                         <span id="error-numCuenta" class="error"></span>
+                        <input type="text" id="numCuentaSinGuiones" name="numCuentaSinGuiones">
                     </td>
-
                 </tr>
-
                 <tr>
                     <td colspan="2">
                         <button type="submit" id="enviar">Enviar</button>
                         <button type="reset">Borrar</button>
                     </td>
                 </tr>
-
             </table>
         </form>
     </div>
