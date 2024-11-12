@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <script src="u4e3_expresionesregulares.js" defer></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <img src="img/counter.png" alt="counter" class="imagen_counter">
+    <div class="control-producto">
+        <form id="formulario" method="POST">
+            <h2>Formulario de Control de Producto</h2>
+            <table border="1" cellpadding="5" cellspacing="0">
+                <tr>
+                    <td><label for="fechaHora">Fecha y Hora de Creación:</label></td>
+                    <td>
+                        <input type="text" id="fechaHora" name="fechaHora" pattern="^\d{2}/\d{2}/\d{4} \d{2}:\d{2}$"
+                            title="Formato esperado: dd/mm/aaaa hh:mm">
+                        <span id="error-fechaHora" class="error"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="cocinero">Cocinero:</label></td>
+                    <td>
+                        <input type="text" id="cocinero" name="cocinero" pattern="^[A-Z]{2}\$\d{4}$"
+                            title="Formato esperado: dos letras mayúsculas, símbolo $, y cuatro dígitos (ej. WW$1234)">
+                        <span id="error-cocinero" class="error"></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><label for="destinatario">Destinatario:</label></td>
+                    <td>
+                        <input type="text" id="destinatario" name="destinatario" pattern="^[A-Z]{2,3}_[a-z]+:\d{4}$"
+                            title="Formato esperado: dos o tres letras mayúsculas, guión bajo, ciudad en minúsculas, dos puntos, y código de distrito de 4 dígitos (ej. NM_alburquerque:1234)">
+                        <span id="error-destinatario" class="error"></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><label for="gramos">Gramos:</label></td>
+                    <td>
+                        <input type="number" id="gramos" name="gramos" min="1000" max="5000"
+                            title="Ingrese un valor entre 1000 y 5000 gramos">
+                        <span id="error-gramos" class="error"></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><label for="composicion">Composición:</label></td>
+                    <td>
+                        <input type="text" id="composicion" name="composicion" pattern="^\d+g([A-Za-z]{1,2}\d*){2}$"
+                            title="Formato esperado: cantidad en gramos seguida de dos conjuntos de letras y números (ej. 200gC3OH7)">
+                        <span id="error-composicion" class="error"></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><label for="numCuenta">Número de cuenta de EEUU:</label></td>
+                    <td>
+                        <input type="text" id="numCuenta" name="numCuenta" pattern="^[A-Z]{2}\d{2}-\d{12}-\d{2}$"
+                            title="Formato esperado: dos letras, dos dígitos, un guión, doce dígitos, un guión, y dos dígitos de control">
+                        <span id="error-numCuenta" class="error"></span>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        <button type="submit" id="enviar">Enviar</button>
+                        <button type="reset">Borrar</button>
+                    </td>
+                </tr>
+
+            </table>
+        </form>
+    </div>
+</body>
+
+</html>
