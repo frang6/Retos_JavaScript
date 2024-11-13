@@ -118,7 +118,6 @@ const validarNumCuenta = (event) => {
         resultado.innerHTML = "❌";
         return false;
     }
-    
     // Extrae los dígitos de la cuenta y los dígitos de control
     const digitosCuenta = cuenta.substring(5, 17); // 12 dígitos de la cuenta
     const control = cuenta.substring(18, 22); // 4 dígitos de control
@@ -141,7 +140,6 @@ const validarNumCuenta = (event) => {
         // Muestra los dígitos de la cuenta sin guiones
         document.getElementById("numCuentaSinGuiones").value = cuenta.replace(/-/g, "");
     }
-
 }
 
 
