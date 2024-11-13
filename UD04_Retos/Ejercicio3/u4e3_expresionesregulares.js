@@ -1,10 +1,20 @@
 document.getElementById('enviar').addEventListener('click', function (event) {
+    // Evitar que el formulario se envíe antes de realizar la validación
     event.preventDefault();
-    if (validarFecha() && validarCocinero() && validarDestinatario() && validarGramos() && validarComposicion()) {
+
+    // Llamar a todas las funciones de validación
+    const fechaHoraValido = validarFechaHora();
+    const cocineroValido = validarCocinero();
+    const destinatarioValido = validarDestinatario();
+    const gramosValido = validarGramos();
+    const composicionValida = validarComposicion();
+    const numCuentaValido = validarNumCuenta();
+
+    // Enviar el formulario solo si todas las validaciones son correctas
+    if (fechaHoraValido && cocineroValido && destinatarioValido && gramosValido && composicionValida && numCuentaValido) {
         document.getElementById('formulario').submit();
     }
-
-});    
+});  
 
 const validarFechaHora = () => {
     const fechaHora = document.getElementById('fechaHora');
