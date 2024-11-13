@@ -1,9 +1,18 @@
 document.getElementById('enviar').addEventListener('click', function (event) {
-    //Con esto evitamos que el formulario se envie antes de realizar la validacion
+    // Evitar que el formulario se envíe antes de realizar la validación
     event.preventDefault();
 
-    if (validarIdentificador() && validarNombre() && validarFechaNacimiento() && validarTelefono() && validarCorreo()) {
-        this.form.submit();
+    // Llamar a todas las funciones de validación
+    const identificadorValido = validarIdentificador();
+    const nombreValido = validarNombre();
+    const fechaNacimientoValida = validarFechaNacimiento();
+    const telefonoValido = validarTelefono();
+    const correoValido = validarCorreo();
+    const edadValida = validarEdad();
+
+    // Enviar el formulario solo si todas las validaciones son correctas
+    if (identificadorValido && nombreValido && fechaNacimientoValida && telefonoValido && correoValido && edadValida) {
+        document.getElementById('formulario').submit();
     }
 });
 
@@ -19,10 +28,10 @@ function validarIdentificador() {
         identificador.style.border = '';
     }
 
-    return identificador.validity.patternMismatch;
+    return !identificador.validity.patternMismatch;
 }
 
-// Función para validar Nombre y Apellidos
+
 function validarNombre() {
     const nombre = document.getElementById('nombre');
     const errorMessage = document.getElementById('error-nombre');
@@ -61,15 +70,17 @@ function validarFechaNacimiento() {
 function validarCorreo() {
     const correo = document.getElementById('correo');
     const errorMessage = document.getElementById('error-correo');
+    const correoPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-    if (correo.validity.patternMismatch) {
+    if (!correoPattern.test(correo.value)) {
         errorMessage.textContent = correo.title;
         correo.style.border = '2px solid red';
     } else {
         errorMessage.textContent = '';
         correo.style.border = '';
     }
-    return !correo.validity.patternMismatch;
+
+    return correoPattern.test(correo.value);
 }
 
 // Función para validar Teléfono
