@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <script src="u4e4_localStorage.js" defer></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="contacto">
+        <form id="formulario" method="POST">
+            <h2>Suscripción para unirse al club de Ski</h2>
+            <table border="1" cellpadding="5" cellspacing="0">
+                <tr>
+                    <td><label for="identificador">Identificador:</label></td>
+                    <td><input type="text" id="identificador" name="identificador" 
+                            pattern="^[A-Za-z]\d{8}[A-Za-z]$" title="Debe tener 1 letra, 8 cifras y 1 letra">
+                        <span id="error-identificador" class="error"></span></td>
+                </tr>
+                <tr>
+                    <td><label for="nombre">Nombre y Apellidos:</label></td>
+                    <td><input type="text" id="nombre" name="nombre" maxlength="50">
+                        <span id="error-nombre" class="error"></span></td>
+                </tr>
+                <tr>
+                    <td><label for="fecha">Fecha de nacimiento:</label></td>
+                    <td><input type="text" id="fecha" name="fecha" 
+                            pattern="^\d{2}/\d{2}/\d{4}$" title="Formato dd/mm/yyyy">
+                        <span id="error-fecha" class="error"></span></td>
+                </tr>
+                <tr>
+                    <td><label for="correo">Correo electrónico:</label></td>
+                    <td>
+                        <input type="text" id="correo" name="correo" title="Correo electrónico no válido">
+                        <span id="error-correo" class="error"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="telefono">Teléfono:</label></td>
+                    <td><input type="text" id="telefono" name="telefono" 
+                            pattern="^\+\d{2,3}-\d{9}$" title="Formato: +código-país seguido de 9 cifras">
+                        <span id="error-telefono" class="error"></span></td>
+                </tr>
+                <tr>
+                    <td><label for="opciones">Edad:</label></td>
+                    <td><select id="opciones" name="opciones">
+                            <option value="" disabled selected>-- Selecciona una opción --</option>
+                            <option value="opcion1">Niño</option>
+                            <option value="opcion2">Adulto</option>
+                            <option value="opcion3">Jubilado</option>
+                        </select>
+                        <span id="error-opciones" class="error"></span></td>
+                </tr>
+                <tr>
+                    <td><label for="suscripcion">Quiere unirse al club de Ski:</label></td>
+                    <td><input type="checkbox" id="suscripcion" name="suscripcion" value="si"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button type="submit" id="enviar">Enviar</button>
+                        <button type="reset">Borrar</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <div class="controlApp">
+        <p>Forfaits registrados hoy: <span id="contadorForFaits">0</span></p>
+        <button id="borrarForfaits">Borrar forfaits</button>
+        <p>Socios registrados hoy: <span id="contadorSocios">0</span></p>
+        <button id="borrarSocios">Borrar socios</button>
+    </div>
+
+</body>
+</html>
