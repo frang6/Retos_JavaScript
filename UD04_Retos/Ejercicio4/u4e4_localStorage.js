@@ -1,21 +1,3 @@
-document.getElementById('enviar').addEventListener('click', function (event) {
-    // Evitar que el formulario se envíe antes de realizar la validación
-    event.preventDefault();
-
-    // Llamar a todas las funciones de validación
-    const identificadorValido = validarIdentificador();
-    const nombreValido = validarNombre();
-    const fechaNacimientoValida = validarFechaNacimiento();
-    const telefonoValido = validarTelefono();
-    const correoValido = validarCorreo();
-    const edadValida = validarEdad();
-
-    // Enviar el formulario solo si todas las validaciones son correctas
-    if (identificadorValido && nombreValido && fechaNacimientoValida && telefonoValido && correoValido && edadValida) {
-        document.getElementById('formulario').submit();
-    }
-});
-
 function validarIdentificador() {
     const identificador = document.getElementById('identificador');
     const errorMessage = document.getElementById('error-identificador');
@@ -30,7 +12,6 @@ function validarIdentificador() {
 
     return !identificador.validity.patternMismatch;
 }
-
 
 function validarNombre() {
     const nombre = document.getElementById('nombre');
@@ -50,7 +31,6 @@ function validarNombre() {
     return !(nombre.validity.valueMissing || nombre.validity.tooLong);
 }
 
-// Función para validar Fecha de Nacimiento (dd/mm/yyyy)
 function validarFechaNacimiento() {
     const fecha = document.getElementById('fecha');
     const errorMessage = document.getElementById('error-fecha');
@@ -66,7 +46,6 @@ function validarFechaNacimiento() {
     return !fecha.validity.patternMismatch;
 }
 
-// Función para validar Correo Electrónico
 function validarCorreo() {
     const correo = document.getElementById('correo');
     const errorMessage = document.getElementById('error-correo');
@@ -83,7 +62,6 @@ function validarCorreo() {
     return correoPattern.test(correo.value);
 }
 
-// Función para validar Teléfono
 function validarTelefono() {
     const telefono = document.getElementById('telefono');
     const errorMessage = document.getElementById('error-telefono');
@@ -99,7 +77,6 @@ function validarTelefono() {
     return !telefono.validity.patternMismatch;
 }
 
-// Función para validar Edad: debe seleccionar una opción
 function validarEdad() {
     const edad = document.getElementById('opciones');
     const errorMessage = document.getElementById('error-opciones');
@@ -114,3 +91,100 @@ function validarEdad() {
 
     return !edad.validity.valueMissing;
 }
+
+/*
+* Aqui empieza el ejercicio, arriba estan las funciones validadoras del ejercicio anterior
+*/
+
+const contadorForFaits = document.getElementById('contadorForFaits');
+const contadorSocios = document.getElementById('contadorSocios');
+const botonBorrarForfaits = document.getElementById('borrarForfaits');
+const botonBorrarSocios = document.getElementById('borrarSocios');
+
+// Función para inicializar contadores en localStorage si no existen
+const inicializarContadores = () => {
+    const hoy = new Date().toLocaleDateString(); // Fecha como string
+    const fechaGuardada = localStorage.getItem('fecha');
+
+    //Si la fecha que esta guardada no es la de hoy, es decir hemos cambiado de dia se actualizaran tanto la fecha como los contadores de forfaits y socios
+    if (fechaGuardada !== hoy) {
+        localStorage.setItem('fecha', hoy);
+        localStorage.setItem('forfaits', '0');
+        localStorage.setItem('socios', '0');
+    }
+};
+
+// Función para obtener el valor de un contador. Seria como un tipo de getter que llamaremos mas tarde 
+const obtenerContador = (clave) => {
+    return parseInt(localStorage.getItem(clave)) || 0;
+};
+
+// Función para actualizar el valor de un contador. Seria como un setter que llamaremos mas tarde
+const actualizarContador = (clave, valor) => {
+    localStorage.setItem(clave, valor.toString());
+};
+
+// Función para mostrar los contadores en el DOM
+const mostrarContadores = () => {
+    const forfaits = obtenerContador('forfaits');
+    const socios = obtenerContador('socios');
+    contadorForFaits.textContent = forfaits;
+    contadorSocios.textContent = socios;
+};
+
+const incrementarForfaits = () => {
+    const forfaits = obtenerContador('forfaits') + 1;
+    actualizarContador('forfaits', forfaits);
+    mostrarContadores();
+};
+
+
+const incrementarSocios = () => {
+    const socios = obtenerContador('socios') + 1;
+    actualizarContador('socios', socios);
+    mostrarContadores();
+};
+
+const resetearForfaits = () => {
+    actualizarContador('forfaits', 0);
+    mostrarContadores();
+};
+
+const resetearSocios = () => {
+    actualizarContador('socios', 0);
+    mostrarContadores();
+};
+
+// Asociamos eventos a los botones, tanto de borrar socios como de forfaits
+botonBorrarForfaits.addEventListener('click', resetearForfaits);
+botonBorrarSocios.addEventListener('click', resetearSocios);
+
+//Ejecucion cuando el formulario se encie, se aplicaran tanto las validaciones y en caso de pasarlas se actualizaran los contadores
+document.getElementById('enviar').addEventListener('click', function (event) {
+    event.preventDefault();
+
+    const identificadorValido = validarIdentificador();
+    const nombreValido = validarNombre();
+    const fechaNacimientoValida = validarFechaNacimiento();
+    const telefonoValido = validarTelefono();
+    const correoValido = validarCorreo();
+    const edadValida = validarEdad();
+
+    if (identificadorValido && nombreValido && fechaNacimientoValida && telefonoValido && correoValido && edadValida) {
+        incrementarForfaits();
+
+        // Incrementamos el contador de socios si está seleccionada la suscripción, si no solo se incrementaran los forfaits
+        const esSocio = document.getElementById('suscripcion').checked;
+        if (esSocio) {
+            incrementarSocios();
+        }
+
+        document.getElementById('formulario').submit();
+    }
+});
+
+// Inicializa los contadores al cargar la página
+document.addEventListener('DOMContentLoaded', () => {
+    inicializarContadores();
+    mostrarContadores();
+});
