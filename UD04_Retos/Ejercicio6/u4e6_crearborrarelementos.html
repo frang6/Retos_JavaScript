@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Portal Web JANDULA F.C</h1>
+    <div id="formularioRegistro">
+        <h2>Añadir Jugadores al Equipo</h2>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" maxlength="50" placeholder="Introduce el nombre del futbolista">
+        <label for="posicon">Posicion:</label>
+        <input type="text" id="posicion" name="posicion" maxlength="50" placeholder="De que juega el futbolista?">
+        <label for="numCamiseta">Numero de Camiseta:</label>
+        <input type="number" id="numCamiseta" name="numCamiseta" min="1" max="99" placeholder="Introduce el numero de camiseta del futbolista">
+        <label for="imagen">Imagen del Futbolista:</label>
+        <input type="file" id="imagen" name="imagen" accept="image/*" placeholder="Selecciona una imagen del Futbolista">
+        <button type="button"id="botonAnadir">Anadir futbolista</button>  
+    </div>
+    
+    <button type="button" id="verJugadores">Ver lista de jugadores</button>
+
+    <div id="plantilla"> 
+    </div>
+    
+    <script src="u4e6_crearborrarelementos.js"></script>
+</body>
+</html>
