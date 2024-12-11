@@ -1,0 +1,109 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden; 
+    height: 100%;
+    background: linear-gradient(to bottom, #a8edea, #fed6e3);
+    background-attachment: fixed;
+}
+
+h1 {
+    text-align: center;
+    margin: 20px 0;
+    color: #444;
+    font-size: 2.5rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+#buscarPais {
+    display: block;
+    margin: 20px auto;
+    padding: 10px;
+    width: 90%;
+    max-width: 400px;
+    font-size: 16px;
+    border: 1px solid #bbb;
+    border-radius: 25px;
+    outline: none;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    background: #fff;
+}
+
+#buscarPais:focus {
+    border-color: #a8edea;
+    box-shadow: 2px 2px 12px rgba(168, 237, 234, 0.6);
+    transition: all 0.7s ease;
+    transform: scale(1.2);
+}
+
+table {
+    font-family: 'Roboto', sans-serif;
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+thead {
+    background: linear-gradient(to right, #a8edea, #fed6e3);
+    color: #444;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+thead th {
+    padding: 15px;
+}
+
+tbody {
+    background: #fff;
+}
+
+tbody tr {
+    border-bottom: 1px solid #eee;
+    transition: background 0.3s ease;
+}
+
+tbody tr:hover {
+    background-color: #f8a5bf;
+    transform: scale(1.02);
+}
+
+tbody td {
+    padding: 15px;
+    text-align: center;
+}
+
+tbody td:nth-child(4) {
+    font-weight: bold;
+}
+
+html, body {
+    height: 100%;
+}
+
+table {
+    margin-bottom: 40px; 
+}
+
+tbody tr {
+    position: relative;
+}
+
+tbody tr:hover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(168, 237, 234, 0.2);
+    z-index: -1;
+    transition: opacity 0.3s ease;
+}

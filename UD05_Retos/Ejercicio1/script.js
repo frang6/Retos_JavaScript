@@ -1,46 +1,43 @@
-const apiURL = "https://restcountries.com/v3.1/all";
+window.addEventListener('load', () => {
+  obtenerDatos();
+  buscarPaises();
+});
 
-// Elementos del DOM
-const buscarPais = document.getElementById("buscarPais");
-const tablaPaises = document.getElementById("paises");
+import { api } from './api.js';
+let paises = [];
 
-// Función para obtener los datos de la API
-async function fetchCountries() {
-  try {
-    const response = await fetch(apiURL);
-    const countries = await response.json();
-    displayCountries(countries);
-    addSearchFilter(countries);
-  } catch (error) {
-    console.error("Error al obtener los datos:", error);
-  }
-}
+const buscarPais = document.getElementById('buscarPais');
+const tablaPaises = document.getElementById('paises');
 
-// Función para mostrar los países en la tabla
-function displayCountries(countries) {
-  tablaPaises.innerHTML = ""; // Limpiar contenido anterior
-  countries.forEach((country) => {
-    const fila = document.createElement("tr");
+const obtenerDatos = async () => {
+  const response = await fetch(api);
+  paises = await response.json(); 
+  mostrarPaises(paises);
+};
+
+const mostrarPaises = (paisesMostrados) => {
+  tablaPaises.innerHTML = ''; 
+  paisesMostrados.forEach(pais => {
+    const fila = document.createElement('tr');
     fila.innerHTML = `
-      <td>${country.name.common}</td>
-      <td>${country.capital ? country.capital[0] : "N/A"}</td>
-      <td>${country.region}</td>
-      <td>${country.population.toLocaleString()}</td>
+      <td>${pais.name.common}</td>
+      <td>${pais.capital ? pais.capital[0] : 'N/A'}</td>
+      <td>${pais.region}</td>
+      <td>${pais.population.toLocaleString()}</td>
     `;
     tablaPaises.appendChild(fila);
   });
-}
+};
 
-// Función para agregar el filtro de búsqueda
-function addSearchFilter(countries) {
-  buscarPais.addEventListener("input", () => {
-    const searchTerm = buscarPais.value.toLowerCase();
-    const filteredCountries = countries.filter((country) =>
-      country.name.common.toLowerCase().includes(searchTerm)
+const buscarPaises = () => {
+  buscarPais.addEventListener('input', () => {
+    const paisBuscado = buscarPais.value;
+    const paisesFiltrados = paises.filter(pais =>
+      pais.name.common.toLowerCase().includes(paisBuscado.toLowerCase())
     );
-    displayCountries(filteredCountries);
+    mostrarPaises(paisesFiltrados);
   });
-}
+};
 
-// Obtener y mostrar los países al cargar la página
-fetchCountries();
+
+
