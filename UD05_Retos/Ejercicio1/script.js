@@ -12,13 +12,22 @@ const buscarPais = document.getElementById('buscarPais');
 const tablaPaises = document.getElementById('paises');
 
 const obtenerDatos = async () => {
-  const response = await fetch(api);
-  paises = await response.json(); 
-  mostrarPaises(paises);
+  try {
+    const response = await fetch(api);
+
+    if (!response.ok) {
+      throw new Error('Error ${response.status} de la BBDD: ${response.statusText}');
+    }
+    paises = await response.json();
+    mostrarPaises(paises);
+
+  } catch (error) {
+    console.log("Error al obtener los datos:", error);
+  }
 };
 
 const mostrarPaises = (paisesMostrados) => {
-  tablaPaises.innerHTML = ''; 
+  tablaPaises.innerHTML = '';
   paisesMostrados.forEach(pais => {
     const fila = document.createElement('tr');
     fila.innerHTML = `
