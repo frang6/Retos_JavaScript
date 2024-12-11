@@ -18,6 +18,7 @@ const obtenerDatos = async () => {
     if (!response.ok) {
       throw new Error('Error ${response.status} de la BBDD: ${response.statusText}');
     }
+    
     paises = await response.json();
     mostrarPaises(paises);
 

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>Películas Populares</h1>
+        <div class="filtro">
+            <select id="generoFiltro">
+                <option value="">Todos los géneros</option>
+            </select>
+            <input type="text" id="buscarTitulo" placeholder="Buscar por título...">
+        </div>
+    </header>
+    <main>
+        <div id="peliculas" class="peliculas"></div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Películas Populares</p>
+    </footer>
+
+    <script src="api.js"></script>
+    <script type="module" src="script.js"></script>
+</body>
+</html>
