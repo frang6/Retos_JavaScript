@@ -1,6 +1,8 @@
 window.addEventListener('load', () => {
-  obtenerDatos();
-  buscarPaises();
+  setTimeout(() => {
+    obtenerDatos();
+    buscarPaises();
+  }, 300)
 });
 
 import { api } from './api.js';
