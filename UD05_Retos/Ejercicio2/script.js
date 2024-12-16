@@ -84,6 +84,7 @@ const mostrarPeliculas = (peliculas) => {
         peliculaElement.innerHTML = `
             <h2>${pelicula.Title}</h2>
             <img src="${pelicula.Poster}" alt="${pelicula.Title}">
+            <p> ${pelicula.Year}</p>
         `;
 
         peliculasContainer.appendChild(peliculaElement);

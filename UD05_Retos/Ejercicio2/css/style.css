@@ -126,6 +126,12 @@ main {
     color: #333;
 }
 
+.pelicula p {
+    padding: 1rem;
+    margin: 0;
+    color: #666;
+}
+
 footer {
     background: linear-gradient(270deg, #a10e0e, #f05454, #800000);
     background-size: 400% 400%;
