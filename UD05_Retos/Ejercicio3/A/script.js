@@ -2,46 +2,59 @@ import { api } from './api.js';
 
 window.addEventListener('load', () => {
     document.getElementById('personajeForm').addEventListener('submit', (event) => {
-        event.preventDefault(); // Evita que el formulario se envíe y recargue la página
+        event.preventDefault();
         obtenerDatos();
     });
 });
 
 const obtenerDatos = async () => {
     try {
-        // Obtén el ID del personaje desde el input
-        let personajeId = document.getElementById('personajeId').value;
+        const personajeId = document.getElementById('personajeId').value.trim();
+        const response = await fetch(`${api}/${personajeId}/`);
 
-        // Asegúrate de que el ID sea válido (según el patrón definido en el input)
-        if (!personajeId.match(/^[1-9][0-9]?$/)) {
-            document.getElementById('error-message').textContent = "Por favor, ingresa un ID válido entre 1 y 99.";
-            return;
-        }
-
-        // Realiza la solicitud para obtener los datos del personaje
-        const response = await fetch(`${api}${personajeId}/`);
         if (!response.ok) {
-            throw new Error(`Error ${response.status} de la BBDD: ${response.statusText}`);
+            throw new Error(`Error ${response.status}: ${response.statusText}`);
         }
 
         const data = await response.json();
 
-        // Verifica que la propiedad result esté presente
+        //Si encuentra un personaje con ese id, lo muestra, si no salta la vcentanita de que no hay ninguno
         if (data.result) {
-            mostrarPersonaje(data.result);  
+            mostrarPersonaje(data.result.properties);
         } else {
             throw new Error("Personaje no encontrado.");
         }
 
     } catch (error) {
-        console.log("Error al obtener los datos:", error);
-        document.getElementById('error-message').textContent = error.message;
+        console.error("Error al obtener los datos:", error);
+        mostrarError(error.message);
     }
 };
 
+
 const mostrarPersonaje = (personaje) => {
-    // Muestra el nombre del personaje en el div con el ID 'personaje'
-    document.getElementById('personaje').innerHTML = `<h1>${personaje.name}</h1>`;
+    //Limpiamos previamente cualquier informacion
+    document.getElementById('error').textContent = "";
+    document.getElementById('personaje').innerHTML = "";
+
+    document.getElementById('personaje').style.display = 'block';
+    document.getElementById('personaje').innerHTML = `
+        <h2>Detalles del Personaje</h2>
+        <p><strong>Nombre:</strong> ${personaje.name}</p>
+        <p><strong>Altura:</strong> ${personaje.height} cm</p>
+        <p><strong>Peso:</strong> ${personaje.mass} kg</p>
+        <p><strong>Género:</strong> ${personaje.gender}</p>
+    `;
+};
+
+const mostrarError = () => {
+    document.getElementById('personaje').textContent = "";
+
+    document.getElementById('personaje').style.display = 'none';
+    document.getElementById('error').style.display = 'block';
+    document.getElementById('error').innerHTML = `
+        <p>Personaje no Encontrado</p>
+    `;
 };
 
 
