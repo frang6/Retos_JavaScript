@@ -9,13 +9,20 @@
 <body>
     <h1>Seccion Star Wars</h1>
     <select id="categorias">
-        <option value="personajes">Personajes</option>
-        <option value="peliculas">Peliculas</option>
-        <option value="planetas">Planetas</option>
-        <option value="vehiculos">Vehiculos</option>
-        <option value="navesespaciales">Naves Espaciales</option>
-        <option value="especies">Especies</option>
+        <option value="people">Personajes</option>
+        <option value="films">Peliculas</option>
+        <option value="planets">Planetas</option>
+        <option value="vehicles">Vehiculos</option>
+        <option value="starships">Naves Espaciales</option>
+        <option value="species">Especies</option>
     </select>
+
+    <div id="informacion"></div>
+
+    <div id="buscarPorId" style="display: none;">
+        <input type="text" id="idInput" placeholder="Introduce un identificador">
+        <button id="btnBuscar">Buscar</button>
+    </div>
 
     <script type="module" src="script.js"></script>
 </body>
