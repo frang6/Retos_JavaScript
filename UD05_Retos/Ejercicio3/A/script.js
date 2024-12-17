@@ -34,7 +34,7 @@ const obtenerDatos = async () => {
 
 const mostrarPersonaje = (personaje) => {
     //Limpiamos previamente cualquier informacion
-    document.getElementById('error').textContent = "";
+    document.getElementById('error').style.display = 'none';
     document.getElementById('personaje').innerHTML = "";
 
     document.getElementById('personaje').style.display = 'block';
