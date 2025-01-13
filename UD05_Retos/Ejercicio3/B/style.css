@@ -1,0 +1,88 @@
+/* General */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Header */
+header#cabecera {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+/* Main content */
+main#contenido {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Formulario */
+form#formularioSW {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+form#formularioSW label {
+    font-weight: bold;
+}
+
+form#formularioSW select,
+form#formularioSW input,
+form#formularioSW button {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form#formularioSW button {
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form#formularioSW button:hover {
+    background-color: #555;
+}
+
+/* Resultado */
+section#resultado {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+/* Carta */
+.carta {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.carta:hover {
+    transform: scale(1.05);
+}
+
+/* Mensaje de error */
+.error {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+}

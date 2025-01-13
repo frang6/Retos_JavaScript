@@ -3,27 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
-    <title>Document</title>
+    <title>Formulario Avanzado Star Wars</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
 </head>
 <body>
-    <h1>Seccion Star Wars</h1>
-    <select id="categorias">
-        <option value="people">Personajes</option>
-        <option value="films">Peliculas</option>
-        <option value="planets">Planetas</option>
-        <option value="vehicles">Vehiculos</option>
-        <option value="starships">Naves Espaciales</option>
-        <option value="species">Especies</option>
-    </select>
+    <header id="cabecera">
+        <h1>Formulario Avanzado Star Wars</h1>
+    </header>
+    <main id="contenido">
+        <form id="formularioSW" >
+            <label for="tipoDato">Tipo de dato:</label>
+            <select id="tipoDato" name="tipoDato" required>
+                <option value="">Selecciona un tipo</option>
+                <option value="people">Personajes</option>
+                <option value="films">Películas</option>
+                <option value="planets">Planetas</option>
+                <option value="starships">Naves</option>
+                <option value="species">Especies</option>
+            </select>
+            <label for="idDato">ID del dato (opcional):</label>
+            <input type="number" id="idDato" name="idDato" placeholder="Ingresa el ID si lo conoces">
 
-    <div id="informacion"></div>
-
-    <div id="buscarPorId" style="display: none;">
-        <input type="text" id="idInput" placeholder="Introduce un identificador">
-        <button id="btnBuscar">Buscar</button>
-    </div>
-
-    <script type="module" src="script.js"></script>
+            <button type="submit">Consultar</button>
+        </form>
+        <section id="resultado" class="resultado"></section>
+    </main>
 </body>
 </html>
