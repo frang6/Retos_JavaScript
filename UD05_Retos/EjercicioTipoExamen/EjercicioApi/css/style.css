@@ -1,0 +1,20 @@
+/* Estilos básicos */
+.pokemon-card {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    display: inline-block;
+    margin: 10px;
+    text-align: center;
+}
+
+.pokemon-card:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+#datosPokemon {
+    display: flex;
+    flex-wrap: wrap;
+}
